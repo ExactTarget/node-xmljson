@@ -13,11 +13,11 @@ var to_json = require('rerender').to_json;
 
 // An XML string
 var xml = '' +
-	'<dictionary>' +
+	'<data>' +
 		'<prop1>val1</prop1>' +
 		'<prop2>val2</prop2>' +
 		'<prop3>val3</prop3>' +
-	'</dictionary>';
+	'</data>';
 
 to_json(xml, function (error, data) {
 	// Module returns a JS object

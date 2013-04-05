@@ -33,14 +33,14 @@ exports['module basics'] = {
 exports['translates between json and xml'] = {
 
 	'handles a simple dictionary': function (test) {
-		test.expect(2);
+		test.expect(4);
 
 		var staticXml = '' +
-			'<dictionary>' +
+			'<data>' +
 				'<prop1>val1</prop1>' +
 				'<prop2>val2</prop2>' +
 				'<prop3>val3</prop3>' +
-			'</dictionary>';
+			'</data>';
 
 		var staticJson = '' +
 			'{' +
@@ -51,8 +51,14 @@ exports['translates between json and xml'] = {
 
 		to_json(staticXml, function (error, data) {
 			test.ifError(error);
-			test.equal(JSON.stringify(data), staticJson, 'rendered JSON should be correct');
-			test.done();
+			var json = JSON.stringify(data);
+			test.equal(json, staticJson, 'rendered JSON should be correct');
+
+			to_xml(json, function (error, xml) {
+				test.ifError(error);
+				test.equal(xml, staticXml, 'rendered XML should be correct');
+				test.done();
+			});
 		});
 	}
 
