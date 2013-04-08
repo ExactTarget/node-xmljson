@@ -137,22 +137,26 @@ exports['translates between json and xml'] = {
 
 		var staticXml = '' +
 			'<data>' +
-			'<obj1>' +
-			'<objProp1>objVal1</objProp1>' +
-			'</obj1>' +
-			'<obj2>' +
-			'<objProp2>objVal2</objProp2>' +
-			'</obj2>' +
-			'<obj3>' +
-			'<objProp3>objVal3</objProp3>' +
-			'</obj3>' +
+				'<array1>' +
+					'<item>' +
+						'<objProp1>objVal1</objProp1>' +
+					'</item>' +
+					'<item>' +
+						'<objProp2>objVal2</objProp2>' +
+					'</item>' +
+					'<item>' +
+						'<objProp3>objVal3</objProp3>' +
+					'</item>' +
+				'</array1>' +
 			'</data>';
 
 		var staticJson = '' +
 			'{' +
-			'"obj1":{"objProp1":"objVal1"},' +
-			'"obj2":{"objProp2":"objVal2"},' +
-			'"obj3":{"objProp3":"objVal3"}' +
+				'"array1":[' +
+					'{"objProp1":"objVal1"},' +
+					'{"objProp2":"objVal2"},' +
+					'{"objProp3":"objVal3"}' +
+				']' +
 			'}';
 
 		to_json(staticXml, function (error, data) {
