@@ -170,6 +170,126 @@ exports['translates between json and xml'] = {
 				test.done();
 			});
 		});
+	},
+
+	'handles a number value': function (test) {
+		test.expect(4);
+
+		var staticXml = '' +
+			'<data>' +
+				'<prop1>val1</prop1>' +
+				'<prop2 type="num">3</prop2>' +
+				'<prop3>val3</prop3>' +
+			'</data>';
+
+		var staticJson = '' +
+			'{' +
+				'"prop1":"val1",' +
+				'"prop2":3,' +
+				'"prop3":"val3"' +
+			'}';
+
+		to_json(staticXml, function (error, data) {
+			test.ifError(error);
+			var json = JSON.stringify(data);
+			test.equal(json, staticJson, 'rendered JSON should be correct');
+
+			to_xml(json, function (error, xml) {
+				test.ifError(error);
+				test.equal(xml, staticXml, 'rendered XML should be correct');
+				test.done();
+			});
+		});
+	},
+
+	'handles a true value': function (test) {
+		test.expect(4);
+
+		var staticXml = '' +
+			'<data>' +
+				'<prop1>val1</prop1>' +
+				'<prop2 type="bool">true</prop2>' +
+				'<prop3>val3</prop3>' +
+			'</data>';
+
+		var staticJson = '' +
+			'{' +
+				'"prop1":"val1",' +
+				'"prop2":true,' +
+				'"prop3":"val3"' +
+			'}';
+
+		to_json(staticXml, function (error, data) {
+			test.ifError(error);
+			var json = JSON.stringify(data);
+			test.equal(json, staticJson, 'rendered JSON should be correct');
+
+			to_xml(json, function (error, xml) {
+				test.ifError(error);
+				test.equal(xml, staticXml, 'rendered XML should be correct');
+				test.done();
+			});
+		});
+	},
+
+	'handles a false value': function (test) {
+		test.expect(4);
+
+		var staticXml = '' +
+			'<data>' +
+				'<prop1>val1</prop1>' +
+				'<prop2 type="bool">false</prop2>' +
+				'<prop3>val3</prop3>' +
+			'</data>';
+
+		var staticJson = '' +
+			'{' +
+				'"prop1":"val1",' +
+				'"prop2":false,' +
+				'"prop3":"val3"' +
+			'}';
+
+		to_json(staticXml, function (error, data) {
+			test.ifError(error);
+			var json = JSON.stringify(data);
+			test.equal(json, staticJson, 'rendered JSON should be correct');
+
+			to_xml(json, function (error, xml) {
+				test.ifError(error);
+				test.equal(xml, staticXml, 'rendered XML should be correct');
+				test.done();
+			});
+		});
+	},
+
+	'handles a null value': function (test) {
+		test.expect(4);
+
+		var staticXml = '' +
+			'<data>' +
+				'<prop1>val1</prop1>' +
+				'<prop2 type="null">null</prop2>' +
+				'<prop3>val3</prop3>' +
+			'</data>';
+
+		var staticJson = '' +
+			'{' +
+				'"prop1":"val1",' +
+				'"prop2":null,' +
+				'"prop3":"val3"' +
+			'}';
+
+		to_json(staticXml, function (error, data) {
+			test.ifError(error);
+			var json = JSON.stringify(data);
+			test.equal(json, staticJson, 'rendered JSON should be correct');
+
+			to_xml(json, function (error, xml) {
+				test.ifError(error);
+				test.equal(xml, staticXml, 'rendered XML should be correct');
+				test.done();
+			});
+		});
 	}
 
 };
