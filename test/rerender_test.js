@@ -30,6 +30,12 @@ exports['module basics'] = {
 	}
 };
 
+// The below tests all follow the same format. XML and JSON strings are provided whose
+// structure should be identical in terms of the translation provided by this module.
+//
+// The test logic translates XML to JSON, validates the JSON string is exactly as expected,
+// then translates back to XML and validates the XML is identical to the starting XML.
+
 exports['translates between json and xml'] = {
 
 	'handles a simple dictionary': function (test) {
