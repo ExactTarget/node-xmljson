@@ -198,6 +198,36 @@ exports['translates between json and xml'] = {
 		});
 	},
 
+	'handles a single-element array': function (test) {
+		test.expect(4);
+
+		var staticXml = '' +
+			'<data>' +
+				'<array1 type="array">' +
+					'<item>string 1</item>' +
+				'</array1>' +
+			'</data>';
+
+		var staticJson = '' +
+			'{' +
+				'"array1":[' +
+					'"string 1"' +
+				']' +
+			'}';
+
+		to_json(staticXml, function (error, data) {
+			test.ifError(error);
+			var json = JSON.stringify(data);
+			test.equal(json, staticJson, 'rendered JSON should be correct');
+
+			to_xml(json, function (error, xml) {
+				test.ifError(error);
+				test.equal(xml, staticXml, 'rendered XML should be correct');
+				test.done();
+			});
+		});
+	},
+
 	'handles an array of dictionaries': function (test) {
 		test.expect(4);
 
