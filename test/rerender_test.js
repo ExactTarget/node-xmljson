@@ -66,7 +66,7 @@ exports['translates between json and xml'] = {
 		test.expect(4);
 
 		var staticXml = '' +
-			'<data>' +
+			'<data type="array">' +
 				'<item>val1</item>' +
 				'<item>val2</item>' +
 				'<item>val3</item>' +
@@ -133,7 +133,7 @@ exports['translates between json and xml'] = {
 
 		var staticXml = '' +
 			'<data>' +
-				'<array1>' +
+				'<array1 type="array">' +
 					'<item>string 1</item>' +
 					'<item>string 2</item>' +
 					'<item>string 3</item>' +
@@ -167,7 +167,7 @@ exports['translates between json and xml'] = {
 
 		var staticXml = '' +
 			'<data>' +
-				'<array1>' +
+				'<array1 type="array">' +
 					'<item>' +
 						'<objProp1>objVal1</objProp1>' +
 					'</item>' +
