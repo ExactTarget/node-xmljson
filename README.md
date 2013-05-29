@@ -2,6 +2,8 @@
 
 Translates between JSON and XML formats
 
+[![Build Status](https://www.travis-ci.org/ExactTarget/node-xmljson.png?branch=master)](https://www.travis-ci.org/ExactTarget/node-xmljson)
+
 ## Getting Started
 Install the module with: `npm install xmljson`
 
@@ -55,7 +57,7 @@ to_xml(json, function (error, xml) {
 
 _This module is semantically versioned: <http://semver.org>_
 
-### Version 0.1.0 `2013-01-26`
+### Version 0.1.0 `2013-05-29`
 
 * Initial release
 
