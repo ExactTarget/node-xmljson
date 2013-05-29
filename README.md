@@ -1,15 +1,15 @@
-# rerender
+# xmljson
 
 Translates between JSON and XML formats
 
 ## Getting Started
-Install the module with: `npm install rerender`
+Install the module with: `npm install xmljson`
 
 ### Convert XML to JSON
 
 ```javascript
 // Load the module
-var to_json = require('rerender').to_json;
+var to_json = require('xmljson').to_json;
 
 // An XML string
 var xml = '' +
@@ -34,7 +34,7 @@ to_json(xml, function (error, data) {
 
 ```javascript
 // Load the module
-var to_xml = require('rerender').to_xml;
+var to_xml = require('xmljson').to_xml;
 
 // A JSON string
 var json = '' +
@@ -60,8 +60,8 @@ _This module is semantically versioned: <http://semver.org>_
 * Initial release
 
 ## Contributing
-Before writing code, we suggest you [search for issues](https://github.com/ExactTarget/node-rerender/issues?state=open)
-or [create a new one](https://github.com/ExactTarget/node-rerender/issues/new) to confirm where your contribution fits into
+Before writing code, we suggest you [search for issues](https://github.com/ExactTarget/node-xmljson/issues?state=open)
+or [create a new one](https://github.com/ExactTarget/node-xmljson/issues/new) to confirm where your contribution fits into
 our roadmap.
 
 In lieu of a formal style guide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality.
