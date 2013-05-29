@@ -426,6 +426,62 @@ exports['translates between json and xml'] = {
 				test.done();
 			});
 		});
+	},
+
+	'handles xml with attributes': function (test) {
+		test.expect(4);
+
+		var staticXml = '' +
+			'<data>' +
+				'<node1>node 1 content</node1>' +
+				'<node2 att1="att1Val">node 2 content</node2>' +
+				'<node3 att2="att2Val" att3="att3Val">' +
+					'<node4 att4="att4Val">node 4 content</node4>' +
+					'<node5></node5>' +
+					'<node6 att5="att5Val"/>' +
+				'</node3>' +
+			'</data>';
+
+		var staticJson = '' +
+			'{' +
+				'"node1":"node 1 content",' +
+				'"node2":{' +
+					'"_":"node 2 content",' +
+					'"$":{' +
+						'"att1":"att1Val"' +
+					'}' +
+				'},' +
+				'"node3":{' +
+					'"$":{' +
+						'"att2":"att2Val",' +
+						'"att3":"att3Val"' +
+					'},' +
+					'"node4":{' +
+						'"_":"node 4 content",' +
+						'"$":{' +
+							'"att4":"att4Val"' +
+						'}' +
+					'},' +
+					'"node5":"",' +
+					'"node6":{' +
+						'"$":{' +
+							'"att5":"att5Val"' +
+						'}' +
+					'}' +
+				'}' + 
+			'}';
+
+		to_json(staticXml, function (error, data) {
+			test.ifError(error);
+			var json = JSON.stringify(data);
+			test.equal(json, staticJson, 'rendered JSON should be correct');
+
+			to_xml(json, function (error, xml) {
+				test.ifError(error);
+				test.equal(xml, staticXml, 'rendered XML should be correct');
+				test.done();
+			});
+		});
 	}
 
 };
