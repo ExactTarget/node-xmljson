@@ -482,6 +482,59 @@ exports['translates between json and xml'] = {
 				test.done();
 			});
 		});
-	}
+	},
+	
+	'handles mixed duplicate nodes and namespaced nodes as siblings': function (test) {
+		var staticXml = '' +
+		'<data>' +
+			'<prop attr="attrVal1" type="image/*" href="http://some.com/path/to/image" />' +
+			'<prop attr="attrVal2" type="application/atom+xml" href="https://some.com/other/path/to/feed" />' +
+			'<prop attr="attrVal3" type="application/atom+xml" href="https://some.com/another/path/to/feed" />' +
+			'<ns:prop attr="http://some.com/url/to/asset" address="spam@spam.com" primary="true" />' +
+		'</data>';
 
+		var staticJson = '' +
+			'{' +
+				'"prop":{' +
+					'"$":{' +
+						'"attr":"attrVal1"' +
+						'"type":"image/*"' +
+						'"href":"http://some.com/path/to/image"' +
+					'}' +
+				'}' +
+				'"prop":{' +
+					'"$":{' +
+						'"attr":"attrVal2"' +
+						'"type":"application/atom+xml"' +
+						'"href":"http://some.com/other/path/to/feed"' +
+					'}' +
+				'}' +
+				'"prop":{' +
+					'"$":{' +
+						'"attr":"attrVal3"' +
+						'"type":"application/atom+xml"' +
+						'"href":"http://some.com/another/path/to/feed"' +
+					'}' +
+				'}' +
+				'"ns:prop":{' +
+					'"$":{' +
+						'"attr":"http://some.com/url/to/asset"' +
+						'"address":"spam@spam.com"' +
+						'"primary":"true"' +
+					'}' +
+				'}' +
+			'}';
+
+		to_json(staticXml, function (error, data) {
+			test.ifError(error);
+			var json = JSON.stringify(data);
+			test.equal(json, staticJson, 'rendered JSON should be correct');
+
+			to_xml(json, function (error, xml) {
+				test.ifError(error);
+				test.equal(xml, staticXml, 'rendered XML should be correct');
+				test.done();
+			});
+		});
+	}
 };
