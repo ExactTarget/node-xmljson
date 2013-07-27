@@ -57,6 +57,10 @@ to_xml(json, function (error, xml) {
 
 _This module is semantically versioned: <http://semver.org>_
 
+### Version 0.2.0 `2013-07-27`
+
+* Support child elements where some have duplicate names and some do not
+
 ### Version 0.1.0 `2013-05-29`
 
 * Initial release
